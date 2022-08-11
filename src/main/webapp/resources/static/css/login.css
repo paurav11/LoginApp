@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lato:wght@400&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Lato', sans-serif !important;
+}
+
+body{
+	height: auto;
+	background-image: linear-gradient(180deg, #4183f0, #034afc);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.box {
+	text-align: center;
+	width: 40%;
+	height: 400px;
+	margin: 50px auto auto auto;
+	padding: 10px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0px 8px 24px 0px rgba(0,0,0,0.5);
+}
+
+#heading {
+	padding: 10px 0 10px 0;
+	font-family: 'Dancing Script', cursive !important;
+	text-align: center;
+	color: #000000;
+}
+
+#login-form {
+	margin: 40px 20px 40px 20px;
+	text-align: left;
+}
+
+.login {
+	margin: 20px 0 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#login-btn {
+	padding: 5px 15px 5px 15px;
+}
+
+#registration-link {
+	font-size: 0.8em;
+}
