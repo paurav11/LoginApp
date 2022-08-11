@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan(basePackages="com.springmvc.web.LoginApp")
 @EnableWebMvc
-public class WebMVCConfiguration implements WebMvcConfigurer {
+public class WebMVCConfig implements WebMvcConfigurer {
 
 	@Bean
 	public ViewResolver getViewResolver(){

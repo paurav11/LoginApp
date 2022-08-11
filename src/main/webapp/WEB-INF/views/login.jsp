@@ -20,7 +20,7 @@
     				<h3 id="heading">LoginApp</h3>
     			</div>
     			<div class="boxdiv2">
-    				<form id="login-form">
+    				<form id="login-form" autocomplete="on">
 					  <div class="mb-3">
 					    <label for="email" class="form-label">Email<span style="color: red;">&#42;</span></label>
 					    <input type="email" class="form-control" id="email" name="email" autofocus required>

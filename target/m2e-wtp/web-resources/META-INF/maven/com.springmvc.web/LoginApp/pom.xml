@@ -13,6 +13,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring.version>5.2.3.RELEASE</spring.version>
+		<hibernate.version>6.1.2.Final</hibernate.version>
 	</properties>
 
 	<dependencies>
@@ -32,7 +33,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
-			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 
@@ -56,8 +56,7 @@
 	    <dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
-		    <version>6.1.2.Final</version>
-		    <type>pom</type>
+		    <version>${hibernate.version}</version>
 		</dependency>
 		
 		<!-- MySQL Connector -->
