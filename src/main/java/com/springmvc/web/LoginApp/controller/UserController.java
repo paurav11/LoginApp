@@ -11,6 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,20 +45,28 @@ public class UserController {
 		return new ModelAndView("register");
 	}
 	
+	// Profile Page
+	@RequestMapping(value="/profile", method = RequestMethod.GET)
+	public ModelAndView profile() throws IOException {
+		return new ModelAndView("profile");
+	}
+	
 	// Check whether user is already available or not
 	public boolean isUser(String email){
-		conn = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-		UserDAOImpl userDAOImpl = conn.getBean("dao", UserDAOImpl.class);
-		List<User> userList = userDAOImpl.getUserByEmail(email);
-		
-		for(int i=0; i<userList.size(); i++) {
-			System.out.println(userList.get(i));
-		}
+		List<User> userList = getUserByEmail(email);
 		
 		if(userList.size() == 0) {
 			return false;
 		}
 		return true;
+	}
+	
+	// Get user by email
+	public List<User> getUserByEmail(String email){
+		conn = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		UserDAOImpl userDAOImpl = conn.getBean("dao", UserDAOImpl.class);
+		List<User> userList = userDAOImpl.getUserByEmail(email);		
+		return userList;
 	}
 	
 	// Save User
@@ -93,5 +102,26 @@ public class UserController {
 			}
 			return new ResponseEntity(HttpStatus.CREATED);
 		}
+	}
+	
+	// Verify User
+	@RequestMapping(value = "/verifyUser/{email}/{password}", method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity verifyUser(@PathVariable String email, @PathVariable String password){
+		if(isUser(email)) {
+			List<User> userList = getUserByEmail(email);
+			if(userList.get(0).getPassword().equals(password)) {
+				return new ResponseEntity(HttpStatus.OK);
+			}
+		}
+		return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+	}
+	
+	// Get userId from email
+	@RequestMapping(value = "/getUserId/{email}/", method = RequestMethod.GET)
+	public @ResponseBody int getUserId(@PathVariable String email) {
+		conn = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		UserDAOImpl userDAOImpl = conn.getBean("dao", UserDAOImpl.class);
+		List<User> userList = userDAOImpl.getUserByEmail(email);
+		return userList.get(0).getId();
 	}
 }

@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -36,12 +37,12 @@ public class UserDAOImpl implements UserDAO {
 		session = factory.openSession();
 		tr = session.beginTransaction();
 		@SuppressWarnings("rawtypes")
-		Query query = session.createQuery("from User where email=?");
+		Query query = session.createQuery("from User where email=?"); //HQL
 		query.setParameter(0, email);
 		@SuppressWarnings("unchecked")
 		List<User> userList = query.list();
 		tr.commit();
-		session.close();
+		session.close();		
 		return userList;
 	}
 }

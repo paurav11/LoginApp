@@ -58,10 +58,12 @@ function saveUser(){
         data: JSON.stringify(registrationFormData),
         context: document.body,
         success: function(result){
+			console.log(result);
             alert('Registration successful. Now you can login!');
             window.location.replace("http://localhost:8080/LoginApp/login");
         },
         error: function(error){
+			console.log(error);
         	resetForm();
             alert('User account already exists! Try again with a different email.');
         }
