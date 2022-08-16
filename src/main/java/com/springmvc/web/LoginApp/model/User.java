@@ -1,3 +1,7 @@
+/**
+ @author: Paurav Shah
+ */
+
 package com.springmvc.web.LoginApp.model;
 
 import javax.persistence.Column;

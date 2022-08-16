@@ -1,3 +1,5 @@
+<!-- @author: Paurav Shah -->
+
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -82,6 +84,7 @@
 			<div class="boxdiv3">	
 				<a id="login-link" href="http://localhost:8080/LoginApp/login">Already an user? (Login)</a>
 			</div>
+			<br>
 		</div>
 	</div>
 </body>

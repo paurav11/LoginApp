@@ -1,3 +1,7 @@
+/**
+@author: Paurav Shah
+*/
+
 package com.springmvc.web.LoginApp.controller;
 
 import java.io.IOException;
@@ -54,7 +58,6 @@ public class UserController {
 	// Check whether user is already available or not
 	public boolean isUser(String email){
 		List<User> userList = getUserByEmail(email);
-		
 		if(userList.size() == 0) {
 			return false;
 		}
@@ -62,7 +65,8 @@ public class UserController {
 	}
 	
 	// Get user by email
-	public List<User> getUserByEmail(String email){
+	@RequestMapping(value = "/getUser/{email}/", method = RequestMethod.GET)
+	public @ResponseBody List<User> getUserByEmail(@PathVariable String email){
 		conn = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		UserDAOImpl userDAOImpl = conn.getBean("dao", UserDAOImpl.class);
 		List<User> userList = userDAOImpl.getUserByEmail(email);		

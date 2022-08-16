@@ -1,3 +1,7 @@
+/*
+@author: Paurav Shah
+*/
+
 function resetForm(){
 	document.getElementById("registration-form").reset();
 }
